@@ -24,6 +24,7 @@
  * 
  * Thomas Tarpin-Lyonnet - Version History
  * 28/12/2020 - Orange 3D v1.0
+ * 13/01/2021 - Orange 3D v1.1 : E3D v6 hotend change
  * 
  */
 
@@ -514,10 +515,10 @@
     #define DEFAULT_Ki_LIST {   1.25,   1.25 }
     #define DEFAULT_Kd_LIST { 86.00, 86.00 }
   #else
-    // [Orange 3D v1.0]
-    #define DEFAULT_Kp 27.64
-    #define DEFAULT_Ki 1.79
-    #define DEFAULT_Kd 106.47    
+    // [Orange 3D v1.1]
+    #define DEFAULT_Kp 21.29
+    #define DEFAULT_Ki 1.63
+    #define DEFAULT_Kd 69.33    
   #endif
 #endif // PIDTEMP
 
@@ -592,7 +593,7 @@
  * Note: For Bowden Extruders make this large enough to allow load/unload.
  */
 #define PREVENT_LENGTHY_EXTRUDE
-#define EXTRUDE_MAXLENGTH 200
+#define EXTRUDE_MAXLENGTH 600
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -762,8 +763,8 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-// [Orange 3D v1.0]
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 100 }
+// [Orange 3D v1.1]
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 143 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1012,8 +1013,8 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-// [Orange 3D v1.0]
-#define NOZZLE_TO_PROBE_OFFSET { -22, -40, -1.6 }
+// [Orange 3D v1.1]
+#define NOZZLE_TO_PROBE_OFFSET { -44, -2, -2.675 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1160,20 +1161,13 @@
 #define Y_BED_SIZE 207
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-// [Orange 3D v1.0]
-#define X_MIN_POS -34
+// [Orange 3D v1.1] - Used to be X_MIN_POS = -34
+#define X_MIN_POS -16
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 200
-
-// #define X_MIN_POS 0
-// #define Y_MIN_POS 0
-// #define Z_MIN_POS 0
-// #define X_MAX_POS X_BED_SIZE
-// #define Y_MAX_POS Y_BED_SIZE
-// #define Z_MAX_POS 200
 
 /**
  * Software Endstops
@@ -1547,7 +1541,7 @@
 // @section temperature
 
 // Preheat Constants
-// [Orange 3D v1.0]
+// [Orange 3D v1.1]
 #define PREHEAT_1_LABEL       "PLA"
 #define PREHEAT_1_TEMP_HOTEND 190
 #define PREHEAT_1_TEMP_BED     60
@@ -1569,14 +1563,14 @@
  *    P1  Raise the nozzle always to Z-park height.
  *    P2  Raise the nozzle by Z-park amount, limited to Z_MAX_POS.
  */
-//#define NOZZLE_PARK_FEATURE
+#define NOZZLE_PARK_FEATURE
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_MAX_POS - 10), 20 }
+  #define NOZZLE_PARK_POINT { (X_MAX_POS - 10), (Y_MIN_POS + 10), 20 }
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
-  #define NOZZLE_PARK_Z_RAISE_MIN   2   // (mm) Always raise Z by at least this distance
+  #define NOZZLE_PARK_Z_RAISE_MIN   5   // (mm) Always raise Z by at least this distance
   #define NOZZLE_PARK_XY_FEEDRATE 100   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
   #define NOZZLE_PARK_Z_FEEDRATE    5   // (mm/s) Z axis feedrate (not used for delta printers)
 #endif
@@ -1861,7 +1855,7 @@
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-//#define SPEAKER
+#define SPEAKER
 
 //
 // The duration and frequency for the UI feedback sound.
