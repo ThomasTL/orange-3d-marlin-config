@@ -25,6 +25,7 @@
  * Thomas Tarpin-Lyonnet - Version History
  * 28/12/2020 - Orange 3D v1.0
  * 13/01/2021 - Orange 3D v1.1 : E3D v6 hotend change
+ * 15/02/2021 - Orange 3D v1.2
  * 
  */
 
@@ -1013,8 +1014,8 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-// [Orange 3D v1.1]
-#define NOZZLE_TO_PROBE_OFFSET { -44, -2, -2.675 }
+// [Orange 3D v1.2]
+#define NOZZLE_TO_PROBE_OFFSET { -44, -2, -2.55 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.

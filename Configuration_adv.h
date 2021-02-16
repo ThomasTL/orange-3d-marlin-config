@@ -25,6 +25,7 @@
  * Thomas Tarpin-Lyonnet - Version History
  * 28/12/2020 - Orange 3D v1.0
  * 16/01/2021 - Orange 3D v1.1
+ * 15/02/2021 - Orange 3D v1.2 : Adding babysteps on Z axis
  * 
  */
 
@@ -1616,7 +1617,8 @@
  *
  * Warning: Does not respect endstops!
  */
-//#define BABYSTEPPING
+// [Orange 3D v1.2]
+#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
   //#define INTEGRATED_BABYSTEPPING         // EXPERIMENTAL integration of babystepping into the Stepper ISR
   //#define BABYSTEP_WITHOUT_HOMING
@@ -1627,7 +1629,7 @@
   #define BABYSTEP_MULTIPLICATOR_Z  1       // (steps or mm) Steps or millimeter distance for each Z babystep
   #define BABYSTEP_MULTIPLICATOR_XY 1       // (steps or mm) Steps or millimeter distance for each XY babystep
 
-  //#define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
+  #define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
   #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
     #define DOUBLECLICK_MAX_INTERVAL 1250   // Maximum interval between clicks, in milliseconds.
                                             // Note: Extra time may be added to mitigate controller latency.
